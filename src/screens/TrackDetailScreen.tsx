@@ -13,8 +13,9 @@ import {
   Alert,
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-import { Track, SportType } from '../types';
+
 import { apiService } from '../services/api';
+import { type Track, type SportType } from '../types';
 
 interface TrackDetailScreenProps {
   route: any;

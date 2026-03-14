@@ -13,6 +13,7 @@ import {
   ScrollView,
   ActivityIndicator,
 } from 'react-native';
+
 import { apiService } from '../services/api';
 
 interface RegisterScreenProps {

@@ -1,10 +1,11 @@
 // AllTracks Mobile - API Service
 
-import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios, { type AxiosInstance, type AxiosResponse } from 'axios';
+
 import { 
-  User, Track, SportType, Competition, 
-  AuthRequest, AuthResponse, ApiResponse 
+  type User, type Track, type SportType, type Competition, 
+  type AuthRequest, type AuthResponse, ApiResponse 
 } from '../types';
 
 // Конфигурация API
@@ -42,7 +43,7 @@ class ApiService {
           await AsyncStorage.removeItem('auth_token');
           await AsyncStorage.removeItem('user_data');
         }
-        return Promise.reject(error);
+        throw error;
       }
     );
   }

@@ -11,8 +11,9 @@ import {
   RefreshControl,
   ActivityIndicator,
 } from 'react-native';
-import { Track, SportType } from '../types';
+
 import { apiService } from '../services/api';
+import { type Track, type SportType } from '../types';
 
 interface HomeScreenProps {
   navigation: any;

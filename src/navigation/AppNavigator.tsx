@@ -1,15 +1,15 @@
 // AllTracks Mobile - Navigation
 
-import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React from 'react';
 
 import HomeScreen from '../screens/HomeScreen';
-import TrackDetailScreen from '../screens/TrackDetailScreen';
-import ProfileScreen from '../screens/ProfileScreen';
 import LoginScreen from '../screens/LoginScreen';
+import ProfileScreen from '../screens/ProfileScreen';
 import RegisterScreen from '../screens/RegisterScreen';
+import TrackDetailScreen from '../screens/TrackDetailScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();

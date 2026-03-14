@@ -10,8 +10,9 @@ import {
   ScrollView,
   ActivityIndicator,
 } from 'react-native';
-import { User } from '../types';
+
 import { apiService } from '../services/api';
+import { type User } from '../types';
 
 interface ProfileScreenProps {
   navigation: any;
