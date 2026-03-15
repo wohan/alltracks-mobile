@@ -11,16 +11,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
+
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
+
       - uses: android-actions/setup-android@v3
+
       - run: npm ci --legacy-peer-deps
+
+      - name: Generate native projects (expo prebuild)
+        run: npx expo prebuild --platform android --no-install
+
       - name: Cache Gradle
         uses: actions/cache@v4
         with:
@@ -28,11 +36,13 @@ jobs:
             ~/.gradle/caches
             ~/.gradle/wrapper
           key: gradle-${{ hashFiles('android/**/*.gradle*') }}
+
       - name: Build APK
-        working-directory: ./android
+        working-directory: android
         run: |
           chmod +x gradlew
           ./gradlew assembleRelease --no-daemon
+
       - uses: actions/upload-artifact@v4
         with:
           name: alltracks-release-apk
