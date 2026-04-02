@@ -96,7 +96,7 @@ class ApiService {
     page?: number;
     size?: number;
   }): Promise<Track[]> {
-    const response: AxiosResponse<Track[]> = await this.client.get('/tracks', { params });
+    const response: AxiosResponse<Track[]> = await this.client.get('/tracks/active', { params });
     return response.data;
   }
 
@@ -106,10 +106,10 @@ class ApiService {
   }
 
   async searchTracks(query: string): Promise<Track[]> {
-    const response: AxiosResponse<Track[]> = await this.client.get('/tracks/search', {
-      params: { q: query },
+    const response = await this.client.get('/tracks/search', {
+      params: { name: query },
     });
-    return response.data;
+    return response.data.content ?? response.data;
   }
 
   async getTracksByCity(city: string): Promise<Track[]> {
@@ -119,7 +119,7 @@ class ApiService {
 
   // Виды спорта
   async getSportTypes(): Promise<SportType[]> {
-    const response: AxiosResponse<SportType[]> = await this.client.get('/sport-types');
+    const response: AxiosResponse<SportType[]> = await this.client.get('/sport-types/active');
     return response.data;
   }
 
@@ -136,8 +136,8 @@ class ApiService {
     page?: number;
     size?: number;
   }): Promise<Competition[]> {
-    const response: AxiosResponse<Competition[]> = await this.client.get('/competitions', { params });
-    return response.data;
+    const response = await this.client.get('/competitions/search', { params });
+    return response.data.content ?? response.data;
   }
 
   async getCompetitionById(id: string): Promise<Competition> {

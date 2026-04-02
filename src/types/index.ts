@@ -22,8 +22,8 @@ export interface Track {
   seasonOfWork?: string;
   complexity: number;
   rating: number;
-  images: Image[];
-  coordinates: { lat: number; lng: number };
+  images?: Image[];
+  coordinates?: { lat: number; lng: number };
   sportTypeId: string;
   language: string;
   active: boolean;

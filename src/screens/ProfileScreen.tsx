@@ -160,7 +160,7 @@ export default function ProfileScreen({ navigation }: ProfileScreenProps) {
 
       {/* Действия */}
       <View style={styles.actionsContainer}>
-        <TouchableOpacity style={styles.editButton}>
+        <TouchableOpacity style={styles.editButton} onPress={() => Alert.alert('Редактирование', 'Функция в разработке')}>
           <Text style={styles.editButtonText}>Редактировать профиль</Text>
         </TouchableOpacity>
         
