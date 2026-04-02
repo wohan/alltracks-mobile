@@ -28,6 +28,7 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
   const [city, setCity] = useState('');
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const validateForm = () => {
     if (!username.trim() || !email.trim() || !password.trim() || !confirmPassword.trim()) {
@@ -162,14 +163,22 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
 
           <View style={styles.inputContainer}>
             <Text style={styles.label}>Подтвердите пароль *</Text>
-            <TextInput
-              style={styles.input}
-              value={confirmPassword}
-              onChangeText={setConfirmPassword}
-              placeholder="Повторите пароль"
-              secureTextEntry={!showPassword}
-              editable={!loading}
-            />
+            <View style={styles.passwordContainer}>
+              <TextInput
+                style={styles.passwordInput}
+                value={confirmPassword}
+                onChangeText={setConfirmPassword}
+                placeholder="Повторите пароль"
+                secureTextEntry={!showConfirmPassword}
+                editable={!loading}
+              />
+              <TouchableOpacity
+                style={styles.eyeButton}
+                onPress={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                <Text style={styles.eyeIcon}>{showConfirmPassword ? '🙈' : '👁️'}</Text>
+              </TouchableOpacity>
+            </View>
           </View>
 
           <TouchableOpacity
